@@ -12,7 +12,7 @@
 
 **Setup Service account and get json key**
 
-In this method, we can store data in a Google Cloud Storage (GCS) bucket and fetch it using service account authentication.
+In this method, we can store data in a Google Drive and fetch it using service account authentication.
 
 To create a service account, navigate to IAM & Admin in the left sidebar, and select Service Accounts.
 
@@ -129,23 +129,13 @@ Now you can check your Google Drive folder; you should see a folder named "files
 
 ![secrets](./assets/snap_add_secret.png)
 
-- Now push this to github repo
-
-Note in .dvc folder by default u can push only "config" and ".gitingore" file. Dont change it let it be like that.
-
-- Kindly note it dont ever push "project-xxx.json" file. if you push google will identify it and revoke the token you need to set the key again.
-
-- Add `.dvc/config`, `.gitignore`, `data.dvc` files alone.
-
-- Click to "Secrets and variables" -> "Actions" -> "Reprository secret" in github repo and create a secret with name "GDRIVE_CREDENTIALS_DATA" and oopy the content of project-xxx.json file (credentials.json file) in the content.
-
 ### Github Actions
 
 - Create a .github/workflows folder locally for setting up your GitHub Actions workflow.
 
 - You can refer to the `dvc-pipeline.yml` file for complete content. 
 
-Below is the code used to set up authentication and pull data inside GitHub CI/CD from Google Cloud Storage bucket:
+Below is the code used to set up authentication and pull data inside GitHub CI/CD from Google Cloud Drive:
 
 
 ```
