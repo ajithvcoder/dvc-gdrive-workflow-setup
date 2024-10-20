@@ -10,6 +10,14 @@
 
 ### Setup Service account and Google drive folder
 
+Go to Google cloud console -> Click APIs & Services -> Click Enable APIs and Services
+
+![services](./assets/snap_api_services.png)
+
+Enable Drive Labels API, Google Drive API, Google Drive Activity API
+
+![service_api](./assets/snap_api_service_1.png)
+
 **Setup Service account and get json key**
 
 In this method, we can store data in a Google Drive and fetch it using service account authentication.
