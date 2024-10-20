@@ -1,0 +1,32 @@
+name: DVC - Google Drive Workflow
+on:
+  workflow_dispatch:
+
+jobs:
+  dvc-gcs-workflow:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      repository-projects: write
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python Packages
+        run: pip install -r requirements.txt
+
+      # Note you can also directly use "GDRIVE_CREDENTIALS_DATA" as env variable and pull it
+      - name: Create credentials.json
+        env:
+          GDRIVE_CREDENTIALS_DATA: ${{ secrets.GDRIVE_CREDENTIALS_DATA }}
+        run: |
+          echo $GDRIVE_CREDENTIALS_DATA > credentials_1.json
+
+      - name: Modify DVC Remote
+        run: |
+          dvc remote modify --local myremote gdrive_service_account_json_file_path credentials_1.json
+
+      - name: DVC Pull Data
+        run: |
+          dvc pull -v

@@ -65,12 +65,19 @@ Hereafter, in your local setup, you need to handle two things: the JSON file (dv
 
 - Copy the contents from this Kaggle dataset (https://www.kaggle.com/datasets/khushikhushikhushi/dog-breed-image-dataset) into the data folder and unzip it. Remove all files that are not needed (e.g., archive.zip is not needed after unzipping).
 
+**Tree example**
+
 |- data
+
 |----dataset
+
 |--------Beagle
+
 |--------Boxer
-|--------.
-|--------.
+
+|-------- etc folders
+
+|-------- etc folders
 
 - Install dvc and dvc-gdrive
 
@@ -106,7 +113,7 @@ You can see similar config in your `.dvc/config` file
 
 Now you can check your Google Drive folder; you should see a folder named "files" like this:
 
-![config_file](./assets/snap_config_file.png)
+![config_file](./assets/snap_files_store.png)
 
 ### Github Repo setup
 
@@ -149,7 +156,7 @@ Below is the code used to set up authentication and pull data inside GitHub CI/C
 
       - name: Modify DVC Remote
         run: |
-          dvc remote modify --local myremote credentialpath credentials_1.json
+          dvc remote modify --local myremote gdrive_service_account_json_file_path credentials_1.json
 
       - name: DVC Pull Data
         run: |
@@ -171,6 +178,7 @@ Below is the code used to set up authentication and pull data inside GitHub CI/C
 **Reference**
 
 - Refered 1st point alone in "Using service account" in https://dvc.org/doc/user-guide/data-management/remote-storage/google-drive#using-service-accounts
-- Google cloud storage - https://dvc.org/doc/user-guide/data-management/remote-storage/google-cloud-storage#google-cloud-storage
-- Custom authentication google cloud storage - https://dvc.org/doc/user-guide/data-management/remote-storage/google-cloud-storage#custom-authentication
+- URL config setup - https://dvc.org/doc/user-guide/data-management/remote-storage/google-drive#url-format
+- Using Service Account - GDrive - https://dvc.org/doc/user-guide/data-management/remote-storage/google-drive#using-service-accounts
+
 

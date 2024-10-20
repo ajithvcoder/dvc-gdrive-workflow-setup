@@ -1,2 +1,2 @@
 dvc>=3.55.2
-dvc-gs>=3.0.1
+dvc-gdrive>=3.0.1
