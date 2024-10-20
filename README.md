@@ -2,7 +2,7 @@
 
 **Content**
 
-1. [Setup Service account and Google drive folder](#setup-gcs-bucket-storage)
+1. [Setup Service account and Google drive folder](#setup-service-account-and-google-drive-folder)
 2. [Local Setup](#local-setup)
 3. [Github Repo setup](#github-repo-setup)
 4. [Github Actions](#github-actions)
@@ -158,24 +158,26 @@ Below is the code used to set up authentication and pull data inside GitHub CI/C
 
       - name: Modify DVC Remote
         run: |
-          dvc remote modify --local myremote gdrive_service_account_json_file_path credentials_1.json
+          uv run dvc remote modify --local myremote gdrive_service_account_json_file_path credentials_1.json
 
       - name: DVC Pull Data
         run: |
-          dvc pull -v
+          uv run dvc pull -v
 ```
 
 - Now you can trigger workflow by clicking "Run workflow" in github actions
 
-![workflow-trigger](./assets/snap_workflow_trigger.png)
+Note: I have used `uv` [package](https://pypi.org/project/uv/) in github workflow to set a virtual environment as `dvc-gdrive` is causing some issues with github server instance. So you can also run it without `uv run` before dvc commands.
+
+![workflow-trigger](./assets/snap_run_workflow.png)
 
 - You might see a error like this but its not a problem wait for sometime it is internally downloading files
 
-![default_error](./assets/snap_error_default.png)
+![default_error](./assets/snap_error_gdrive.png)
 
 - After 5 minutes(Depending on the data size) you can see successfull run
 
-![run_success](./assets/snap_run_success.png)
+![run_success](./assets/snap_gdrive_success_run.png)
 
 **Reference**
 
