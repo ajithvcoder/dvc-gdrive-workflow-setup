@@ -1,0 +1,10 @@
+[project]
+name = "dvc-gdrive-workflow-setup"
+version = "0.1.0"
+description = "dvc-gdrive-workflow-setup"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "dvc>=3.55.2"
+    "dvc-gdrive>=3.0.1"
+]

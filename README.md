@@ -96,6 +96,8 @@ You will see that "myremote" has been added in the .dvc file.
 
 - Run `dvc remote modify myremote gdrive_use_service_account true`
 
+- Run `dvc remote modify myremote gdrive_acknowledge_abuse true`
+
 - Run ```dvc remote modify myremote --local gdrive_service_account_json_file_path path/to/file.json```. i.e For example: ```dvc remote modify --local myremote gdrive_service_account_json_file_path devcmanager-385390fe7f4f.json```
 
 You can see similar config in your `.dvc/config` file

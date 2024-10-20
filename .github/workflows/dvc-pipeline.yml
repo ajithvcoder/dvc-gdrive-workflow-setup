@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  dvc-gcs-workflow:
+  dvc-gdrive-workflow:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -13,8 +13,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: Set up Python Packages
-        run: pip install -r requirements.txt
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v2
+
+      - name: Set up Python 3.12
+        run: uv python install 3.12
+
+      - name: Install dependencies
+        run: |
+          uv sync
 
       # Note you can also directly use "GDRIVE_CREDENTIALS_DATA" as env variable and pull it
       - name: Create credentials.json
